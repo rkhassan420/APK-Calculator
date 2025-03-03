@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    tools:context=".Menu">
+
+
+    <Button
+        android:id="@+id/btnHistory"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="History"
+        android:paddingLeft="15sp"
+        android:background="@color/white"/>
+
+</LinearLayout>
