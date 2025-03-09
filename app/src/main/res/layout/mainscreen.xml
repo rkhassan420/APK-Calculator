@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     android:padding="15dp"
     android:weightSum="3"
-    android:background="@drawable/gradient"
+    android:background="#F5F5F5"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -23,9 +23,21 @@
             android:layout_weight="1"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="@color/black"
-            android:text="CALCULATOR"/>
+            android:text="Calculator"/>
+
+        <TextView
+            android:id="@+id/percent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="Converter"/>
+
 
         <ImageView
             android:id="@+id/more"
@@ -176,7 +188,7 @@
             android:background="@drawable/white_rounded"
             android:textStyle="bold"
             android:textSize="30sp"
-            android:text="*" />
+            android:text="×" />
 
     </LinearLayout>
     <LinearLayout
@@ -293,15 +305,25 @@
         android:orientation="horizontal" >
 
 
-        <Button
-            android:id="@+id/btnDecimal"
+<!--        <Button-->
+<!--            android:id="@+id/btnDecimal"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_margin="3dp"-->
+<!--            android:background="@drawable/white_rounded"-->
+<!--            android:textSize="30sp"-->
+<!--            android:text="." />-->
+
+        <ImageView
+            android:id="@+id/scientificBtn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_margin="3dp"
             android:background="@drawable/white_rounded"
-            android:textSize="30sp"
-            android:text="." />
+            android:scaleType="fitCenter"
+            android:src="@drawable/change"/>
 
 
         <Button
@@ -316,14 +338,14 @@
 
 
         <Button
-            android:id="@+id/doubleZero"
+            android:id="@+id/btnDecimal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:textSize="30sp"
             android:layout_margin="3dp"
             android:background="@drawable/white_rounded"
-            android:text="00" />
+            android:text="." />
 
 
         <Button

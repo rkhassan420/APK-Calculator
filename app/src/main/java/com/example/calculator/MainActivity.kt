@@ -35,7 +35,6 @@ class MainActivity : ComponentActivity() {
 
         val zero = findViewById<Button>(R.id.btnZero)
         val dot = findViewById<Button>(R.id.btnDecimal)
-        val double_zero = findViewById<Button>(R.id.doubleZero)
         val one = findViewById<Button>(R.id.btnOne)
         val two = findViewById<Button>(R.id.btnTwo)
         val three = findViewById<Button>(R.id.btnThree)
@@ -56,6 +55,22 @@ class MainActivity : ComponentActivity() {
         val calc = findViewById<Button>(R.id.btnEquals)
 
         val moreIcon = findViewById<ImageView>(R.id.more)
+        val percent = findViewById<TextView>(R.id.percent)
+        val science = findViewById<ImageView>(R.id.scientificBtn)
+
+        science.setOnClickListener {
+            startActivity(Intent(this, ScientificCalculator::class.java))
+            overridePendingTransition(0, 0)
+            finish()
+        }
+
+        percent.setOnClickListener {
+            startActivity(Intent(this, Listicons::class.java))
+            overridePendingTransition(0, 0)
+            finish()
+        }
+
+
 
         moreIcon.setOnClickListener {
             showDialog()
@@ -67,10 +82,8 @@ class MainActivity : ComponentActivity() {
         zero.setOnClickListener {
             input.text = "${input.text}${zero.text}"
         }
-        double_zero.setOnClickListener {
-            input.text = "${input.text}${double_zero.text}"
-        }
         dot.setOnClickListener {
+
             input.text = "${input.text}${dot.text}"
         }
         one.setOnClickListener {
@@ -102,18 +115,10 @@ class MainActivity : ComponentActivity() {
         }
 
 
-        plus.setOnClickListener {
-            input.text = "${input.text}${plus.text}"
-        }
-        subtract.setOnClickListener {
-            input.text = "${input.text}${subtract.text}"
-        }
-        multiply.setOnClickListener {
-            input.text = "${input.text}${multiply.text}"
-        }
-        divide.setOnClickListener {
-            input.text = "${input.text}${divide.text}"
-        }
+        plus.setOnClickListener {      input.text = "${input.text}+"    }
+        subtract.setOnClickListener {  input.text = "${input.text}-"    }
+        multiply.setOnClickListener {  input.text = "${input.text}×"    }
+        divide.setOnClickListener {    input.text = "${input.text}/"    }
 
 
 
@@ -129,25 +134,9 @@ class MainActivity : ComponentActivity() {
             input.text = ""
             display.text = ""
         }
-//
-//        calc.setOnClickListener {
-//
-//            val expression = ExpressionBuilder(input.text.toString()).build()
-//            val result = expression.evaluate()
-//            val longResult = result.toLong()
-//
-//            if (result == longResult.toDouble()){
-//                display.text = longResult.toString()
-//            }
-//            else{
-//                display.text = result.toString()
-//            }
-//
-//
-//        }
 
         calc.setOnClickListener {
-            val expressionText = input.text.toString()
+            val expressionText = input.text.toString().replace("×", "*")
 
             try {
                 val expression = ExpressionBuilder(expressionText).build()
@@ -160,7 +149,7 @@ class MainActivity : ComponentActivity() {
                     result.toString()
                 }
 
-                display.text = finalResult
+                display.text = "= $finalResult";
 
                 // Save history to Room Database
                 saveHistory(expressionText, finalResult)
@@ -197,6 +186,8 @@ class MainActivity : ComponentActivity() {
         btnHistory.setOnClickListener {
             dialog.dismiss()
             startActivity(Intent(this, History::class.java))
+            overridePendingTransition(0, 0)
+
         }
 
 

@@ -34,6 +34,8 @@ class History : ComponentActivity() {  // ✅ Changed from ComponentActivity to 
         val btnBack = findViewById<ImageView>(R.id.btnBack)
         btnBack.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
+            overridePendingTransition(0, 0)
+            finish()
         }
 
         loadHistory()
