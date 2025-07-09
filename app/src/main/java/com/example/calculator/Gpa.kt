@@ -17,7 +17,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class Gpa : ComponentActivity() {
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -61,6 +61,10 @@ class Gpa : ComponentActivity() {
         var final_grade = findViewById<TextView>(R.id.final_grade)
         var final_percentage = findViewById<TextView>(R.id.final_percentage)
         var final_status = findViewById<TextView>(R.id.final_status)
+
+        var sub_count = findViewById<EditText>(R.id.sub_count)
+
+
 
 
         var clear = findViewById<Button>(R.id.clear_btn)
@@ -118,9 +122,16 @@ class Gpa : ComponentActivity() {
             var ns_grade_point_value = ns_grade_point.text.toString().toDoubleOrNull() ?: 0.0
             var mad_grade_point_value = mad_grade_point.text.toString().toDoubleOrNull() ?: 0.0
 
+            val subjectCountInput = sub_count.text.toString().toDoubleOrNull() ?: 0.0
+
+            if (subjectCountInput == null ){
+                Toast.makeText(this, "Please enter valid number of subjects (1–6)", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             var sum =
                 web_grade_point_value + aa_grade_point_value + cc_grade_point_value + iti_grade_point_value + ns_grade_point_value + mad_grade_point_value
-            var gpa_value = sum / 6
+            var gpa_value = sum / subjectCountInput
             gpa.text = String.format("%.2f", gpa_value)
 
 
